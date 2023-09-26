@@ -1,7 +1,6 @@
 @Library('pipeline-library-demo')
 pipeline {
     agent any
-    @Library
     stages {
         stage ('Display'){
             steps {
