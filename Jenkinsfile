@@ -20,12 +20,15 @@ pipeline {
                     log.info 'Started !'
 
                     echo 'Hello, world'
-                    sayHello 'Viet Nguyen'
+                    
 
                     echo 'The value of foo is : ' + GlobalVars.foo
                     def person = new SampleClass()
+                    person.name = 'Viet Nguyen'
+                    sayHello person.name
                     person.age = 21
                     person.increaseAge(10)
+                    echo person.name + 'next year is ' + person.age + 'years old'
                     echo 'Incremented age, is now : ' + person.age
 
                     log.warning 'Finished!'
