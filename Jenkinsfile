@@ -1,6 +1,7 @@
+@Library('share_Library')
 pipeline {
     agent any
-    
+    @Library
     stages {
         stage ('Display'){
             steps {
@@ -13,7 +14,12 @@ pipeline {
             steps {
                 script {
                     def data = "NguyenDucViet"
-                    writeFile(file: "pipeline2.txt", text: data)
+                    if(Files.exists(Paths.get("pipeline2.txt"))){
+                        writeFile(file: Files, text: data)
+                    } else {
+                        FileWriter fw = new FileWriter(file, true);
+                    }
+                    writeFile(file: "pipeline2.txt", text: "\n" + data)
                     sh "pwd"
                     sh "ls -l"
                 }
