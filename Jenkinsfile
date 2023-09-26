@@ -1,4 +1,4 @@
-@Library('share_Library')
+@Library('pipeline-library-demo')
 pipeline {
     agent any
     @Library
@@ -10,28 +10,32 @@ pipeline {
                 }
             }
         }
-        stage ('Write'){
-            steps {
-                script {
-                    def data = "NguyenDucViet"
-                    if(Files.exists(Paths.get("pipeline2.txt"))){
-                        writeFile(file: Files, text: data)
-                    } else {
-                        FileWriter fw = new FileWriter(file, true);
-                    }
-                    writeFile(file: "pipeline2.txt", text: "\n" + data)
-                    sh "pwd"
-                    sh "ls -l"
-                }
-            }
+        stage ('libraries demo'){
+            echo 'Test Libraries'
+            sayHello 'Viet Nguyen'
         }
-        stage ('Read'){
-            steps{
-                script {
-                    def data = readFile(file: "pipeline2.txt")
-                    println(data)
-                }
-            }
-        }
+        // stage ('Write'){
+        //     steps {
+        //         script {
+        //             def data = "NguyenDucViet"
+        //             if(Files.exists(Paths.get("pipeline2.txt"))){
+        //                 writeFile(file: Files, text: data)
+        //             } else {
+        //                 FileWriter fw = new FileWriter(file, true);
+        //             }
+        //             writeFile(file: "pipeline2.txt", text: "\n" + data)
+        //             sh "pwd"
+        //             sh "ls -l"
+        //         }
+        //     }
+        // }
+        // stage ('Read'){
+        //     steps{
+        //         script {
+        //             def data = readFile(file: "pipeline2.txt")
+        //             println(data)
+        //         }
+        //     }
+        // }
     }
 }
