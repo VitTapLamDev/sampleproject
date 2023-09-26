@@ -15,7 +15,7 @@ pipeline {
         stage ('libraries demo'){
             steps {
                 echo 'Hello, world'
-                sayHello 'Dave'
+                sayHello 'Viet Nguyen'
 
                 echo 'The value of foo is : ' + GlobalVars.foo
 
