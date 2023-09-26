@@ -1,4 +1,7 @@
-@Library('pipeline-library-demo')
+@Library('pipeline-library-demo') _
+import com.cleverbuilder.GlobalVars
+import com.cleverbuilder.SampleClass
+
 pipeline {
     agent any
     stages {
